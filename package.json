@@ -7,7 +7,14 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "build:binary": "./scripts/build-binaries.sh",
+    "build:binary:linux": "./scripts/build-binaries.sh linux",
+    "build:binary:windows": "./scripts/build-binaries.sh windows",
+    "build:binary:macos": "./scripts/build-binaries.sh macos",
+    "build:binary:all": "./scripts/build-binaries.sh all",
+    "build:bundles": "./scripts/build-binaries.sh bundles",
+    "build:clean": "./scripts/build-binaries.sh clean"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
