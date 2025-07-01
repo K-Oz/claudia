@@ -1103,7 +1103,7 @@ fn create_sandboxed_claude_command(app: &AppHandle, project_path: &str) -> Resul
 
                             #[cfg(not(unix))]
                             {
-                                let _ = profile; // Prevent unused variable warning
+                                let _profile = profile; // Prevent unused variable warning
                                 log::warn!(
                                     "Sandboxing not supported on Windows, using regular command"
                                 );
