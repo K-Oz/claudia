@@ -981,7 +981,9 @@ fn should_use_sandbox(app: &AppHandle) -> Result<bool, String> {
 
 /// Helper function to create a sandboxed Claude command
 fn create_sandboxed_claude_command(app: &AppHandle, project_path: &str) -> Result<Command, String> {
-    use crate::sandbox::{executor::create_sandboxed_command, profile::ProfileBuilder};
+    #[cfg(unix)]
+    use crate::sandbox::executor::create_sandboxed_command;
+    use crate::sandbox::profile::ProfileBuilder;
     use std::path::PathBuf;
 
     // Get the database connection
@@ -1101,6 +1103,7 @@ fn create_sandboxed_claude_command(app: &AppHandle, project_path: &str) -> Resul
 
                             #[cfg(not(unix))]
                             {
+                                let _profile = profile; // Prevent unused variable warning
                                 log::warn!(
                                     "Sandboxing not supported on Windows, using regular command"
                                 );
