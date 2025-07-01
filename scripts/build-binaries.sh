@@ -58,6 +58,16 @@ install_target() {
     fi
 }
 
+# Validate icon files to prevent RC2175 errors
+validate_icons() {
+    log_info "Validating icon files to prevent build errors..."
+    if [ -f "scripts/validate-build-icons.sh" ]; then
+        ./scripts/validate-build-icons.sh
+    else
+        log_warning "Icon validation script not found, skipping validation"
+    fi
+}
+
 # Build frontend
 build_frontend() {
     log_info "Building frontend..."
@@ -256,31 +266,37 @@ main() {
     case "$command" in
         "linux")
             check_dependencies
+            validate_icons
             build_frontend
             build_linux
             ;;
         "windows")
             check_dependencies
+            validate_icons
             build_frontend
             build_windows
             ;;
         "macos")
             check_dependencies
+            validate_icons
             build_frontend
             build_macos
             ;;
         "macos-arm")
             check_dependencies
+            validate_icons
             build_frontend
             build_macos_arm
             ;;
         "macos-universal")
             check_dependencies
+            validate_icons
             build_frontend
             build_macos_universal
             ;;
         "all")
             check_dependencies
+            validate_icons
             build_frontend
             log_info "Building for all platforms..."
             
@@ -309,6 +325,7 @@ main() {
             ;;
         "bundles")
             check_dependencies
+            validate_icons
             build_frontend
             log_info "Building bundles for current platform..."
             
