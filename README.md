@@ -49,6 +49,7 @@ Think of Claudia as your command center for Claude Code - bridging the gap betwe
   - [Tracking Usage](#tracking-usage)
   - [Working with MCP Servers](#working-with-mcp-servers)
 - [🚀 Installation](#-installation)
+- [☁️ GitPod Setup](#️-gitpod-setup)
 - [🔨 Build from Source](#-build-from-source)
 - [🛠️ Development](#️-development)
 - [🔒 Security](#-security)
@@ -157,6 +158,43 @@ Menu → MCP Manager → Add Server → Configure
 - **Claude Code CLI**: Install from [Claude's official site](https://claude.ai/code)
 
 ### Release Executables Will Be Published Soon
+
+## ☁️ GitPod Setup
+
+**Run parallel Claude Code agents in isolated cloud environments**
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/getAsterisk/claudia)
+
+### Why GitPod for Claude Code?
+
+Think about it like CI/CD. You don't sit around waiting for a test suite to finish. You run jobs, let them cook in the background, and review the results when you're ready. Claude Code needs the same kind of orchestration.
+
+GitPod provides purpose-built infrastructure that supports real agent parallelism:
+
+- **Each Claude Code agent runs in its own environment**
+- **Environments start, stop, and persist** (even when you close your laptop)
+- **Dev Container ensures identical tools and configuration**
+- **Each environment gets its own CPU, memory, file system, and git state**
+
+### Quick Start
+
+1. **[Open in GitPod](https://gitpod.io/#https://github.com/getAsterisk/claudia)** - Claudia includes pre-configured dev containers
+2. **Authenticate Claude Code**: Run `claude login` in your first environment
+3. **Set up GitPod secrets**: Copy your `~/.claude.json` to GitPod file secrets
+4. **Create parallel environments**: `gitpod environment new <repo-url>`
+
+### Detailed Setup
+
+For complete instructions including authentication, dotfiles setup, and managing multiple environments, see our [GitPod Setup Guide](docs/gitpod/GITPOD_SETUP.md).
+
+### What You Get
+
+- ✅ **Pre-installed Claude Code CLI** via dev container features
+- ✅ **Development tools ready**: Rust, Node.js, Tauri, VS Code extensions
+- ✅ **Port forwarding** for Tauri dev server (1420) and Vite (3000)
+- ✅ **Persistent workspaces** that survive browser close
+- ✅ **Isolated environments** - no conflicts between agents
+- ✅ **Parallel execution** - run multiple Claude Code sessions simultaneously
 
 ## 🔨 Build from Source
 

@@ -1,0 +1,56 @@
+# GitPod configuration for Claudia - Claude Code development environment
+image:
+  file: .devcontainer/devcontainer.json
+
+# Exposed ports for development
+ports:
+  - name: Tauri Dev Server
+    port: 1420
+    onOpen: notify
+    description: "Tauri development server"
+  - name: Vite Dev Server  
+    port: 3000
+    onOpen: notify
+    description: "Vite frontend development server"
+  - name: Debug Port
+    port: 8080
+    onOpen: ignore
+    description: "Additional debug port"
+
+# VS Code extensions for Claude Code development
+vscode:
+  extensions:
+    - rust-lang.rust-analyzer
+    - tauri-apps.tauri-vscode
+    - bradlc.vscode-tailwindcss
+    - esbenp.prettier-vscode
+    - ms-vscode.vscode-typescript-next
+
+# Initialization tasks
+tasks:
+  - name: Install Dependencies
+    init: |
+      # Install system dependencies if needed
+      echo "🚀 Setting up Claude Code development environment..."
+      
+      # Install frontend dependencies
+      npm install
+      
+      # Ensure Claude config directory permissions
+      sudo chown -R $(id -u):$(id -g) ~/.claude || true
+      
+      echo "✅ Environment setup complete!"
+    command: |
+      echo "🎯 Ready to develop with Claude Code!"
+      echo "📚 See the GitPod section in README.md for Claude authentication setup"
+      echo "🔄 To start parallel development: gitpod env new <your-repo-url>"
+
+# GitHub prebuilds for faster startup
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    addCheck: true
+    addComment: true
+    addBadge: true

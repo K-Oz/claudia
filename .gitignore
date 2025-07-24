@@ -25,3 +25,7 @@ dist-ssr
 temp_lib/
 
 .cursor/
+
+# GitPod
+.gitpod.yml.bak
+gitpod.env
